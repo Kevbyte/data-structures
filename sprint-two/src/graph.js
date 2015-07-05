@@ -28,19 +28,25 @@ Graph.prototype.hasEdge = function(fromNode, toNode){
   //if puppies's edges has kittens in the array and if kittens's edges has puppies in the array
   var result = false;
   for(var i = 0; i < this.storage[fromNode].edges.length; i++) {
+ 
     if(this.storage[fromNode].edges[i] === toNode) {
       result = true;
+   
+   
     }
   }
   return result;
+
 };
 
 Graph.prototype.addEdge = function(fromNode, toNode){ //puppies, kittens
   //creates a connection between two nodes in graph
+  
   this.storage[fromNode].edges.push(toNode);
   this.storage[toNode].edges.push(fromNode);
-  // console.log(this.storage[fromNode].edges)
-  // console.log(this.storage[toNode].edges)
+
+  
+  
 };
 
 Graph.prototype.removeEdge = function(fromNode, toNode){
@@ -59,9 +65,9 @@ Graph.prototype.removeEdge = function(fromNode, toNode){
 
 Graph.prototype.forEachNode = function(cb){
   //traverses through graph, calling the passed in function once on each node
-  _.each(this.storage, function(value){
-    cb(value);
-  });
+  for(var key in this.storage){
+    cb(key);
+  }
 };
 
 /*
